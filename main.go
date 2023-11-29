@@ -6,15 +6,24 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"log"
 	"log/slog"
+	"os"
+	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 func main() {
-	cfg, err := ini.Load("config.ini")
+	// read config
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		panic(err)
+	}
+	dir = strings.ReplaceAll(dir, "\\", "/")
+	cfg, err := ini.Load(dir + "/config.ini")
 	if err != nil {
 		log.Fatal("Fail to read file: ", err)
 	}
-	// read config
+	slog.Info(dir)
 	section := cfg.Section(ini.DefaultSection)
 	apitoken := section.Key("apitoken")
 	chatid := section.Key("chatid")
