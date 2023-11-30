@@ -8,11 +8,9 @@
 - 支持配置文件，方便管理 API 令牌、聊天 ID 等信息。
 - 支持代理设置，可通过配置文件指定代理地址。
 
-## 安装
+## 下载
 
-```bash
-go get -u github.com/Jisxu/tgsend
-```
+[release](https://github.com/Jisxu/tgsend/releases)
 
 ## 用法
 
